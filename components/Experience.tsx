@@ -2,13 +2,15 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, Stars, ContactShadows } from '@react-three/drei';
 import { LuoXiaoheiModel } from './LuoXiaoheiModel';
+import * as THREE from 'three';
 
 interface ExperienceProps {
   isThinking: boolean;
   expression: 'neutral' | 'happy' | 'blink';
+  modelRef?: React.RefObject<THREE.Group>;
 }
 
-export const Experience: React.FC<ExperienceProps> = ({ isThinking, expression }) => {
+export const Experience: React.FC<ExperienceProps> = ({ isThinking, expression, modelRef }) => {
   return (
     <Canvas
       shadows
@@ -35,7 +37,11 @@ export const Experience: React.FC<ExperienceProps> = ({ isThinking, expression }
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         
         <group position={[0, -1, 0]}>
-          <LuoXiaoheiModel isThinking={isThinking} expression={expression} />
+          <LuoXiaoheiModel 
+            isThinking={isThinking} 
+            expression={expression} 
+            modelRef={modelRef}
+          />
           <ContactShadows opacity={0.5} scale={10} blur={1.5} far={4} resolution={256} color="#000000" />
         </group>
 

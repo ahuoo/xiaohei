@@ -7,13 +7,22 @@ import * as THREE from 'three';
 interface ModelProps {
   isThinking: boolean;
   expression: 'neutral' | 'happy' | 'blink';
+  modelRef?: React.RefObject<THREE.Group>;
 }
 
-export const LuoXiaoheiModel: React.FC<ModelProps> = ({ isThinking, expression }) => {
+export const LuoXiaoheiModel: React.FC<ModelProps> = ({ isThinking, expression, modelRef }) => {
   const groupRef = useRef<THREE.Group>(null);
   const tailRef = useRef<THREE.Group>(null);
   const headRef = useRef<THREE.Group>(null);
   const heixiuRef = useRef<THREE.Group>(null);
+
+  // Sync internal ref with external ref for export
+  useEffect(() => {
+    if (modelRef && groupRef.current) {
+      // @ts-ignore - Assigning readonly property for purpose of ref forwarding
+      modelRef.current = groupRef.current;
+    }
+  }, [modelRef]);
   
   // Materials
   const blackMaterial = new THREE.MeshStandardMaterial({
