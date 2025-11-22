@@ -122,33 +122,33 @@ export const LuoXiaoheiModel: React.FC<ModelProps> = ({ isThinking, expression, 
     <group ref={groupRef} dispose={null}>
       {/* --- HEAD GROUP --- */}
       <group ref={headRef} position={[0, 1.4, 0]}>
-        {/* Main Head Sphere (Ovalish) */}
+        {/* Main Head Sphere (Ovalish) - Increased segments for smoothness */}
         <mesh castShadow receiveShadow scale={[1.15, 0.95, 1]}>
-          <sphereGeometry args={[0.95, 64, 64]} />
+          <sphereGeometry args={[0.95, 256, 256]} />
           <primitive object={blackMaterial} />
         </mesh>
 
         {/* Ears */}
         <group>
-          {/* Left Ear */}
+          {/* Left Ear - High res cone */}
           <mesh position={[-0.7, 0.7, 0]} rotation={[0, 0, 0.5]} castShadow>
-            <coneGeometry args={[0.38, 0.85, 32]} />
+            <coneGeometry args={[0.38, 0.85, 128]} />
             <primitive object={blackMaterial} />
           </mesh>
            {/* Left Ear Inside - Green */}
            <mesh position={[-0.7, 0.7, 0.18]} rotation={[-0.2, 0, 0.5]} scale={[0.6, 0.6, 0.1]}>
-            <coneGeometry args={[0.38, 0.85, 32]} />
+            <coneGeometry args={[0.38, 0.85, 128]} />
             <primitive object={earInsideMaterial} />
           </mesh>
 
           {/* Right Ear */}
           <mesh position={[0.7, 0.7, 0]} rotation={[0, 0, -0.5]} castShadow>
-            <coneGeometry args={[0.38, 0.85, 32]} />
+            <coneGeometry args={[0.38, 0.85, 128]} />
             <primitive object={blackMaterial} />
           </mesh>
           {/* Right Ear Inside - Green */}
           <mesh position={[0.7, 0.7, 0.18]} rotation={[-0.2, 0, -0.5]} scale={[0.6, 0.6, 0.1]}>
-            <coneGeometry args={[0.38, 0.85, 32]} />
+            <coneGeometry args={[0.38, 0.85, 128]} />
             <primitive object={earInsideMaterial} />
           </mesh>
         </group>
@@ -157,28 +157,28 @@ export const LuoXiaoheiModel: React.FC<ModelProps> = ({ isThinking, expression, 
         <group position={[0, 0.1, 0.85]}>
           {/* Left Eye - Separated */}
           <group position={[-0.4, 0.05, 0]} scale={[1, eyeScaleY, 1]}>
-             {/* White */}
+             {/* White - High res */}
             <mesh rotation={[0.1, -0.3, 0]} scale={[1, 1, 0.25]}>
-               <sphereGeometry args={[0.35, 32, 32]} />
+               <sphereGeometry args={[0.35, 64, 64]} />
                <primitive object={eyeWhiteMaterial} />
             </mesh>
-            {/* Pupil - Embedded (Fixed for 3D Printing) */}
+            {/* Pupil - Embedded (Fixed for 3D Printing) - High res */}
             <mesh position={[-0.02, 0, 0.05]} rotation={[0.1, -0.3, 0]} scale={[0.65, 0.65, 0.25]}>
-                 <sphereGeometry args={[0.25, 32, 32]} />
+                 <sphereGeometry args={[0.25, 64, 64]} />
                  <primitive object={eyePupilMaterial} />
             </mesh>
           </group>
 
           {/* Right Eye - Separated */}
           <group position={[0.4, 0.05, 0]} scale={[1, eyeScaleY, 1]}>
-             {/* White */}
+             {/* White - High res */}
             <mesh rotation={[0.1, 0.3, 0]} scale={[1, 1, 0.25]}>
-               <sphereGeometry args={[0.35, 32, 32]} />
+               <sphereGeometry args={[0.35, 64, 64]} />
                <primitive object={eyeWhiteMaterial} />
             </mesh>
-            {/* Pupil - Embedded (Fixed for 3D Printing) */}
+            {/* Pupil - Embedded (Fixed for 3D Printing) - High res */}
             <mesh position={[0.02, 0, 0.05]} rotation={[0.1, 0.3, 0]} scale={[0.65, 0.65, 0.25]}>
-                 <sphereGeometry args={[0.25, 32, 32]} />
+                 <sphereGeometry args={[0.25, 64, 64]} />
                  <primitive object={eyePupilMaterial} />
             </mesh>
           </group>
@@ -193,60 +193,60 @@ export const LuoXiaoheiModel: React.FC<ModelProps> = ({ isThinking, expression, 
 
       {/* --- BODY GROUP --- */}
       <group position={[0, 0.5, 0]}>
-        {/* Torso */}
+        {/* Torso - High res */}
         <mesh castShadow position={[0, 0.1, 0]} scale={[0.85, 1, 0.75]}>
-          <sphereGeometry args={[0.65, 32, 32]} />
+          <sphereGeometry args={[0.65, 256, 256]} />
           <primitive object={blackMaterial} />
         </mesh>
 
-        {/* Front Legs */}
+        {/* Front Legs - High res capsule */}
         <mesh position={[-0.3, -0.4, 0.35]} rotation={[0.2, 0, 0]} castShadow>
-           <capsuleGeometry args={[0.14, 0.5, 4, 8]} />
+           <capsuleGeometry args={[0.14, 0.5, 20, 64]} />
            <primitive object={blackMaterial} />
         </mesh>
         <mesh position={[0.3, -0.4, 0.35]} rotation={[0.2, 0, 0]} castShadow>
-           <capsuleGeometry args={[0.14, 0.5, 4, 8]} />
+           <capsuleGeometry args={[0.14, 0.5, 20, 64]} />
            <primitive object={blackMaterial} />
         </mesh>
 
-        {/* Back Legs */}
+        {/* Back Legs - High res capsule */}
         <mesh position={[-0.35, -0.45, -0.3]} rotation={[-0.2, 0, 0]} castShadow>
-           <capsuleGeometry args={[0.15, 0.4, 4, 8]} />
+           <capsuleGeometry args={[0.15, 0.4, 20, 64]} />
            <primitive object={blackMaterial} />
         </mesh>
         <mesh position={[0.35, -0.45, -0.3]} rotation={[-0.2, 0, 0]} castShadow>
-           <capsuleGeometry args={[0.15, 0.4, 4, 8]} />
+           <capsuleGeometry args={[0.15, 0.4, 20, 64]} />
            <primitive object={blackMaterial} />
         </mesh>
 
-        {/* Tail Group - Original stylized thickness */}
+        {/* Tail Group - High res tube */}
         <group ref={tailRef} position={[0, -0.1, -0.45]}>
              <mesh castShadow>
-                <tubeGeometry args={[tailCurve, 32, 0.08, 12, false]} />
+                <tubeGeometry args={[tailCurve, 256, 0.08, 64, false]} />
                 <primitive object={blackMaterial} />
              </mesh>
-             {/* Round tip for tail */}
+             {/* Round tip for tail - High res */}
              <mesh position={[0, 1.5, -0.4]}>
-                <sphereGeometry args={[0.08, 16, 16]} />
+                <sphereGeometry args={[0.08, 32, 32]} />
                 <primitive object={blackMaterial} />
              </mesh>
         </group>
       </group>
 
-      {/* Heixiu (Little Black Spirit) - Restored */}
+      {/* Heixiu (Little Black Spirit) - Restored - High res */}
       <group ref={heixiuRef}>
         <mesh castShadow>
-          <sphereGeometry args={[0.2, 32, 32]} />
+          <sphereGeometry args={[0.2, 64, 64]} />
           <primitive object={blackMaterial} />
         </mesh>
-        {/* Heixiu Eyes */}
+        {/* Heixiu Eyes - High res */}
         <group position={[0, 0.05, 0.15]} scale={[0.8, 0.8, 0.8]}>
            <mesh position={[-0.08, 0, 0]}>
-             <sphereGeometry args={[0.05, 16, 16]} />
+             <sphereGeometry args={[0.05, 32, 32]} />
              <primitive object={eyeWhiteMaterial} />
            </mesh>
            <mesh position={[0.08, 0, 0]}>
-             <sphereGeometry args={[0.05, 16, 16]} />
+             <sphereGeometry args={[0.05, 32, 32]} />
              <primitive object={eyeWhiteMaterial} />
            </mesh>
         </group>
